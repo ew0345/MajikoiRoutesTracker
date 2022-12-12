@@ -259,7 +259,7 @@ public class MajikoiRoutes extends JFrame {
 			mSIyo.setBounds(305, 49, 97, 23);
 			majikoiS.add(mSIyo);
 			
-			JCheckBox mSShima = new JCheckBox("Futurew with Shima");
+			JCheckBox mSShima = new JCheckBox("Future with Shima");
 			mSShima.setFont(new Font("Tahoma", Font.PLAIN, 15));
 			mSShima.setBounds(305, 152, 177, 23);
 			majikoiS.add(mSShima);
