@@ -8,25 +8,29 @@ import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.ImageIcon;
 import javax.swing.JTabbedPane;
 import javax.swing.UIManager;
 import javax.swing.JCheckBox;
 import java.awt.Font;
+import java.awt.event.ActionEvent;
+
 import javax.swing.SwingConstants;
+import javax.swing.JButton;
 
 public class MajikoiRoutes extends JFrame {
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = 7201113623508556710L;
 
 	final static long startTime = System.currentTimeMillis();
+	
+	static Boolean d = false;
 
 	private JPanel contentPane;
 
@@ -111,95 +115,299 @@ public class MajikoiRoutes extends JFrame {
 			
 			JLabel m1SubRoutes = new JLabel("Sub Routes");
 			m1SubRoutes.setFont(new Font("Tahoma", Font.PLAIN, 17));
-			m1SubRoutes.setBounds(204, 11, 105, 31);
+			m1SubRoutes.setBounds(166, 11, 105, 31);
 			majikoi1.add(m1SubRoutes);
 			
 			JCheckBox m1Kojima = new JCheckBox("Kojima-sensei");
 			m1Kojima.setFont(new Font("Tahoma", Font.PLAIN, 15));
-			m1Kojima.setBounds(204, 50, 115, 23);
+			m1Kojima.setBounds(166, 49, 115, 23);
 			majikoi1.add(m1Kojima);
 			
 			JCheckBox m1Chika = new JCheckBox("Chika");
 			m1Chika.setFont(new Font("Tahoma", Font.PLAIN, 15));
-			m1Chika.setBounds(204, 76, 97, 23);
+			m1Chika.setBounds(166, 75, 97, 23);
 			majikoi1.add(m1Chika);
 			
 			JCheckBox m1Moro = new JCheckBox("Moro");
 			m1Moro.setFont(new Font("Tahoma", Font.PLAIN, 15));
-			m1Moro.setBounds(204, 102, 97, 23);
+			m1Moro.setBounds(166, 101, 97, 23);
 			majikoi1.add(m1Moro);
 			
 			JCheckBox m1Capt = new JCheckBox("Capt");
 			m1Capt.setFont(new Font("Tahoma", Font.PLAIN, 15));
-			m1Capt.setBounds(204, 128, 97, 23);
+			m1Capt.setBounds(166, 127, 97, 23);
 			majikoi1.add(m1Capt);
 			
 			JCheckBox m1Gakuto = new JCheckBox("Gakuto");
 			m1Gakuto.setFont(new Font("Tahoma", Font.PLAIN, 15));
-			m1Gakuto.setBounds(204, 154, 97, 23);
+			m1Gakuto.setBounds(166, 153, 97, 23);
 			majikoi1.add(m1Gakuto);
 			
 			JCheckBox m1HermitCrabs = new JCheckBox("Hermit Crabs");
 			m1HermitCrabs.setFont(new Font("Tahoma", Font.PLAIN, 15));
-			m1HermitCrabs.setBounds(204, 180, 115, 23);
+			m1HermitCrabs.setBounds(166, 179, 115, 23);
 			majikoi1.add(m1HermitCrabs);
 			
 			JCheckBox m1NoRelationship = new JCheckBox("Future without Relationship");
 			m1NoRelationship.setFont(new Font("Tahoma", Font.PLAIN, 15));
-			m1NoRelationship.setBounds(204, 205, 199, 23);
+			m1NoRelationship.setBounds(166, 205, 199, 23);
 			majikoi1.add(m1NoRelationship);
 			
 			JCheckBox m1Mayo = new JCheckBox("Mayo");
 			m1Mayo.setFont(new Font("Tahoma", Font.PLAIN, 15));
-			m1Mayo.setBounds(204, 231, 97, 23);
+			m1Mayo.setBounds(166, 231, 97, 23);
 			majikoi1.add(m1Mayo);
 			
 			JLabel m1HiddneRoutes = new JLabel("Hidden Routes");
 			m1HiddneRoutes.setFont(new Font("Tahoma", Font.PLAIN, 17));
-			m1HiddneRoutes.setBounds(363, 19, 115, 14);
+			m1HiddneRoutes.setBounds(334, 19, 115, 14);
 			majikoi1.add(m1HiddneRoutes);
 			
 			JCheckBox m1TutorialRoom = new JCheckBox("Tutorial Room");
 			m1TutorialRoom.setFont(new Font("Tahoma", Font.PLAIN, 15));
-			m1TutorialRoom.setBounds(363, 50, 117, 23);
+			m1TutorialRoom.setBounds(334, 49, 117, 23);
 			majikoi1.add(m1TutorialRoom);
 			
 			JCheckBox m1Agave = new JCheckBox("Agave");
 			m1Agave.setFont(new Font("Tahoma", Font.PLAIN, 15));
-			m1Agave.setBounds(363, 76, 97, 23);
+			m1Agave.setBounds(334, 75, 97, 23);
 			majikoi1.add(m1Agave);
 			
 			JLabel m1AfterRoutes = new JLabel("After Routes");
 			m1AfterRoutes.setFont(new Font("Tahoma", Font.PLAIN, 17));
-			m1AfterRoutes.setBounds(547, 19, 105, 14);
+			m1AfterRoutes.setBounds(491, 19, 105, 14);
 			majikoi1.add(m1AfterRoutes);
 			
 			JCheckBox m1MomoyoAfter = new JCheckBox("Momoyo After");
 			m1MomoyoAfter.setFont(new Font("Tahoma", Font.PLAIN, 15));
-			m1MomoyoAfter.setBounds(547, 50, 119, 23);
+			m1MomoyoAfter.setBounds(491, 49, 119, 23);
 			majikoi1.add(m1MomoyoAfter);
 			
 			JCheckBox m1MiyakoAfter = new JCheckBox("Miyako After");
 			m1MiyakoAfter.setFont(new Font("Tahoma", Font.PLAIN, 15));
-			m1MiyakoAfter.setBounds(547, 76, 119, 23);
+			m1MiyakoAfter.setBounds(491, 75, 119, 23);
 			majikoi1.add(m1MiyakoAfter);
 			
 			JCheckBox m1YukieAfter = new JCheckBox("Yukie After");
 			m1YukieAfter.setFont(new Font("Tahoma", Font.PLAIN, 15));
-			m1YukieAfter.setBounds(547, 102, 97, 23);
+			m1YukieAfter.setBounds(491, 101, 97, 23);
 			majikoi1.add(m1YukieAfter);
 			
 			JCheckBox m1KazukoAfter = new JCheckBox("Kazuko After");
 			m1KazukoAfter.setFont(new Font("Tahoma", Font.PLAIN, 15));
-			m1KazukoAfter.setBounds(547, 128, 119, 23);
+			m1KazukoAfter.setBounds(491, 127, 119, 23);
 			majikoi1.add(m1KazukoAfter);
-		
+			
 		// MAJIKOI S
-			// TODO
-		
+
 			JPanel majikoiS = new JPanel(false);
 			majikoiS.setLayout(null);
 			tabbedPane.addTab("Majikoi S", majikoiS);
+			
+			JLabel mSMainRoutes = new JLabel("Main Routes");
+			mSMainRoutes.setFont(new Font("Tahoma", Font.PLAIN, 17));
+			mSMainRoutes.setBounds(10, 11, 105, 31);
+			majikoiS.add(mSMainRoutes);
+			
+			JCheckBox mSCommon = new JCheckBox("2nd Year 1st Semester");
+			mSCommon.setFont(new Font("Tahoma", Font.PLAIN, 15));
+			mSCommon.setBounds(10, 49, 177, 23);
+			majikoiS.add(mSCommon);
+			
+			JCheckBox mSMonshiro = new JCheckBox("Monshiro");
+			mSMonshiro.setFont(new Font("Tahoma", Font.PLAIN, 15));
+			mSMonshiro.setBounds(10, 75, 97, 23);
+			majikoiS.add(mSMonshiro);
+			
+			JCheckBox mSMonCont = new JCheckBox("Monshiro Continued");
+			mSMonCont.setFont(new Font("Tahoma", Font.PLAIN, 15));
+			mSMonCont.setBounds(10, 101, 153, 23);
+			majikoiS.add(mSMonCont);
+			
+			JCheckBox mSMargit = new JCheckBox("Margit");
+			mSMargit.setFont(new Font("Tahoma", Font.PLAIN, 15));
+			mSMargit.setBounds(10, 127, 97, 23);
+			majikoiS.add(mSMargit);
+			
+			JCheckBox mSMarCont = new JCheckBox("Margit Continued");
+			mSMarCont.setFont(new Font("Tahoma", Font.PLAIN, 15));
+			mSMarCont.setBounds(10, 153, 135, 23);
+			majikoiS.add(mSMarCont);
+			
+			JCheckBox mSTsubame = new JCheckBox("Tsubame");
+			mSTsubame.setFont(new Font("Tahoma", Font.PLAIN, 15));
+			mSTsubame.setBounds(10, 179, 97, 23);
+			majikoiS.add(mSTsubame);
+			
+			JCheckBox mSTsuCont1 = new JCheckBox("Future Where Tsubame Takes the Lead");
+			mSTsuCont1.setFont(new Font("Tahoma", Font.PLAIN, 15));
+			mSTsuCont1.setBounds(10, 205, 289, 23);
+			majikoiS.add(mSTsuCont1);
+			
+			JCheckBox mSTsuCont2 = new JCheckBox("Future Where Yamato Takes the Lead");
+			mSTsuCont2.setFont(new Font("Tahoma", Font.PLAIN, 15));
+			mSTsuCont2.setBounds(10, 231, 289, 23);
+			majikoiS.add(mSTsuCont2);
+			
+			JLabel mSSubRoutes = new JLabel("Sub Routes");
+			mSSubRoutes.setFont(new Font("Tahoma", Font.PLAIN, 17));
+			mSSubRoutes.setBounds(405, 11, 105, 31);
+			majikoiS.add(mSSubRoutes);
+			
+			JCheckBox mSIyo = new JCheckBox("Iyo");
+			mSIyo.setFont(new Font("Tahoma", Font.PLAIN, 15));
+			mSIyo.setBounds(305, 49, 97, 23);
+			majikoiS.add(mSIyo);
+			
+			JCheckBox mSShima = new JCheckBox("Futurew with Shima");
+			mSShima.setFont(new Font("Tahoma", Font.PLAIN, 15));
+			mSShima.setBounds(305, 152, 177, 23);
+			majikoiS.add(mSShima);
+			
+			JCheckBox mSMaids = new JCheckBox("Future with the Maids");
+			mSMaids.setFont(new Font("Tahoma", Font.PLAIN, 15));
+			mSMaids.setBounds(305, 178, 187, 23);
+			majikoiS.add(mSMaids);
+			
+			JCheckBox mSKazamaFam = new JCheckBox("Future with the Kazama Family");
+			mSKazamaFam.setFont(new Font("Tahoma", Font.PLAIN, 15));
+			mSKazamaFam.setBounds(500, 74, 257, 23);
+			majikoiS.add(mSKazamaFam);
+			
+			JCheckBox mSTatsuko = new JCheckBox("Tatsuko");
+			mSTatsuko.setFont(new Font("Tahoma", Font.PLAIN, 15));
+			mSTatsuko.setBounds(305, 74, 97, 23);
+			majikoiS.add(mSTatsuko);
+			
+			JCheckBox mSYumiko = new JCheckBox("Yumiko");
+			mSYumiko.setFont(new Font("Tahoma", Font.PLAIN, 15));
+			mSYumiko.setBounds(305, 100, 97, 23);
+			majikoiS.add(mSYumiko);
+			
+			JCheckBox mSDevotedCrabs = new JCheckBox("Future Devoted to Hermit Crabs");
+			mSDevotedCrabs.setFont(new Font("Tahoma", Font.PLAIN, 15));
+			mSDevotedCrabs.setBounds(500, 100, 263, 23);
+			majikoiS.add(mSDevotedCrabs);
+			
+			JCheckBox mSFMiyako1 = new JCheckBox("Another Futre with Miyako 1");
+			mSFMiyako1.setFont(new Font("Tahoma", Font.PLAIN, 15));
+			mSFMiyako1.setBounds(500, 126, 235, 23);
+			majikoiS.add(mSFMiyako1);
+			
+			JCheckBox mSFMiyako2 = new JCheckBox("Another Future with Miyako 2");
+			mSFMiyako2.setFont(new Font("Tahoma", Font.PLAIN, 15));
+			mSFMiyako2.setBounds(500, 152, 263, 23);
+			majikoiS.add(mSFMiyako2);
+			
+			JCheckBox mSFMiyako3 = new JCheckBox("Another Future with Miyako 3");
+			mSFMiyako3.setFont(new Font("Tahoma", Font.PLAIN, 15));
+			mSFMiyako3.setBounds(500, 178, 245, 23);
+			majikoiS.add(mSFMiyako3);
+			
+			JCheckBox mSChousokabe = new JCheckBox("Future with Chousokabe");
+			mSChousokabe.setFont(new Font("Tahoma", Font.PLAIN, 15));
+			mSChousokabe.setBounds(305, 204, 205, 23);
+			majikoiS.add(mSChousokabe);
+			
+			JCheckBox mSKokoro = new JCheckBox("Kokoro");
+			mSKokoro.setFont(new Font("Tahoma", Font.PLAIN, 15));
+			mSKokoro.setBounds(305, 126, 97, 23);
+			majikoiS.add(mSKokoro);
+			
+			JCheckBox mSNoRelationship = new JCheckBox("Future without a Relationship");
+			mSNoRelationship.setFont(new Font("Tahoma", Font.PLAIN, 15));
+			mSNoRelationship.setBounds(500, 48, 245, 23);
+			majikoiS.add(mSNoRelationship);
+			
+			JLabel mSHiddenRoutes = new JLabel("Hidden Routes");
+			mSHiddenRoutes.setFont(new Font("Tahoma", Font.PLAIN, 17));
+			mSHiddenRoutes.setBounds(10, 261, 108, 14);
+			majikoiS.add(mSHiddenRoutes);
+			
+			JCheckBox mSKosugi = new JCheckBox("Kosugi");
+			mSKosugi.setFont(new Font("Tahoma", Font.PLAIN, 15));
+			mSKosugi.setBounds(10, 299, 97, 23);
+			majikoiS.add(mSKosugi);
+			
+			JCheckBox mSKosugiCont = new JCheckBox("Future with Kosugi Continued");
+			mSKosugiCont.setFont(new Font("Tahoma", Font.PLAIN, 15));
+			mSKosugiCont.setBounds(10, 325, 213, 23);
+			majikoiS.add(mSKosugiCont);
+			
+			JCheckBox mSChildhood = new JCheckBox("Childhood");
+			mSChildhood.setFont(new Font("Tahoma", Font.PLAIN, 15));
+			mSChildhood.setBounds(10, 351, 97, 23);
+			majikoiS.add(mSChildhood);
+			
+			JCheckBox mSKoyuki = new JCheckBox("Koyuki");
+			mSKoyuki.setFont(new Font("Tahoma", Font.PLAIN, 15));
+			mSKoyuki.setBounds(10, 377, 97, 23);
+			majikoiS.add(mSKoyuki);
+			
+			JCheckBox mSFKoyuki = new JCheckBox("Future with Koyuki");
+			mSFKoyuki.setFont(new Font("Tahoma", Font.PLAIN, 15));
+			mSFKoyuki.setBounds(10, 403, 145, 23);
+			majikoiS.add(mSFKoyuki);
+			
+			JCheckBox mSAcqTakae = new JCheckBox("Future Where You're An Acquaintance of Takae");
+			mSAcqTakae.setFont(new Font("Tahoma", Font.PLAIN, 15));
+			mSAcqTakae.setBounds(10, 429, 339, 23);
+			majikoiS.add(mSAcqTakae);
+			
+			JLabel mSAfterRoutes = new JLabel("After Routes");
+			mSAfterRoutes.setFont(new Font("Tahoma", Font.PLAIN, 17));
+			mSAfterRoutes.setBounds(385, 261, 97, 14);
+			majikoiS.add(mSAfterRoutes);
+			
+			JCheckBox mSMonshiroAfter = new JCheckBox("Monshiro After");
+			mSMonshiroAfter.setFont(new Font("Tahoma", Font.PLAIN, 15));
+			mSMonshiroAfter.setBounds(385, 301, 121, 23);
+			majikoiS.add(mSMonshiroAfter);
+			
+			JCheckBox mSKazukoAfter = new JCheckBox("Kazuko S After");
+			mSKazukoAfter.setFont(new Font("Tahoma", Font.PLAIN, 15));
+			mSKazukoAfter.setBounds(385, 327, 125, 23);
+			majikoiS.add(mSKazukoAfter);
+			
+			JCheckBox mSMomoyoAfter = new JCheckBox("Momoyo S After");
+			mSMomoyoAfter.setFont(new Font("Tahoma", Font.PLAIN, 15));
+			mSMomoyoAfter.setBounds(385, 353, 135, 23);
+			majikoiS.add(mSMomoyoAfter);
+			
+			JCheckBox mSMiyakoAfter = new JCheckBox("Miyako S After");
+			mSMiyakoAfter.setFont(new Font("Tahoma", Font.PLAIN, 15));
+			mSMiyakoAfter.setBounds(385, 379, 121, 23);
+			majikoiS.add(mSMiyakoAfter);
+			
+			JCheckBox mSYukieAfter = new JCheckBox("Yukie S After");
+			mSYukieAfter.setFont(new Font("Tahoma", Font.PLAIN, 15));
+			mSYukieAfter.setBounds(385, 405, 111, 23);
+			majikoiS.add(mSYukieAfter);
+			
+			JCheckBox mSChrisAfter = new JCheckBox("Chris After + S After");
+			mSChrisAfter.setFont(new Font("Tahoma", Font.PLAIN, 15));
+			mSChrisAfter.setBounds(522, 299, 161, 23);
+			majikoiS.add(mSChrisAfter);
+			
+			JCheckBox mSTsuCont1After = new JCheckBox("Future with Tsubame 1 After");
+			mSTsuCont1After.setFont(new Font("Tahoma", Font.PLAIN, 15));
+			mSTsuCont1After.setBounds(522, 351, 235, 23);
+			majikoiS.add(mSTsuCont1After);
+			
+			JCheckBox mSTsuCont2After = new JCheckBox("Future with Tsubame 2 After");
+			mSTsuCont2After.setFont(new Font("Tahoma", Font.PLAIN, 15));
+			mSTsuCont2After.setBounds(522, 377, 235, 23);
+			majikoiS.add(mSTsuCont2After);
+			
+			JCheckBox mSHermitCrabsAfter = new JCheckBox("Future with Hermit Crabs S After");
+			mSHermitCrabsAfter.setFont(new Font("Tahoma", Font.PLAIN, 15));
+			mSHermitCrabsAfter.setBounds(522, 403, 237, 23);
+			majikoiS.add(mSHermitCrabsAfter);
+			
+			JCheckBox mSAgaveAfter = new JCheckBox("Agave After");
+			mSAgaveAfter.setFont(new Font("Tahoma", Font.PLAIN, 15));
+			mSAgaveAfter.setBounds(522, 325, 105, 23);
+			majikoiS.add(mSAgaveAfter);
 		
 		// MAJIKOI A-1
 			
@@ -318,6 +526,8 @@ public class MajikoiRoutes extends JFrame {
 			JPanel majikoiA4 = new JPanel(false);
 			majikoiA4.setLayout(null);
 			tabbedPane.addTab("Majikoi A-4", majikoiA4);
+			
+			
 		
 		// MAJIKOI A-5
 			// TODO
@@ -361,9 +571,13 @@ public class MajikoiRoutes extends JFrame {
 			aboutInfo3.setBounds(22, 334, 735, 32);
 			about.add(aboutInfo3);
 			
+			JButton mDeleteData = new JButton("Delete Files");
+			mDeleteData.setFont(new Font("Tahoma", Font.PLAIN, 30));
+			mDeleteData.setBounds(22, 395, 735, 116);
+			about.add(mDeleteData);
+			
 		// Persistence code for checkboxes
 			// TODO:
-			//	MAJIKOI S
 			//  MAJIKOI A-4
 			//  MAJIKOI A-5
 			
@@ -402,6 +616,26 @@ public class MajikoiRoutes extends JFrame {
 			}
 			br.close();
 			String[] m1States = m1StatesList.toArray(new String[0]);
+			
+			// Read State file for MAJIKOI S
+			if (!mSState.exists()) {
+				mSState.createNewFile();
+				BufferedWriter bw = new BufferedWriter(new FileWriter(mSState));
+				for (int i = 0; i < 37; i++) {
+					bw.write("0");
+					bw.newLine();
+				}
+				bw.close();
+			}
+			List<String> mSStatesList = new ArrayList<String>();
+			BufferedReader br1 = new BufferedReader(new FileReader(mSState));
+			String line1 = br1.readLine();
+			while (line1 != null) {
+				mSStatesList.add(line1);
+				line1 = br1.readLine();
+			}
+			br1.close();
+			String[] mSStates = mSStatesList.toArray(new String[0]);
 			
 			// Read State file for MAJIKOI A-1
 			if (!mA1State.exists()) {
@@ -619,6 +853,272 @@ public class MajikoiRoutes extends JFrame {
 				default: break;
 				}
 				
+				// MAJIKOI S
+				for (int i1 = 0; i1 < mSStates.length; i1++) {
+					switch (i1) {
+					case 0:
+						if (mSStates[i1].equals("0")) {
+							mSCommon.setSelected(false);
+						} else {
+							mSCommon.setSelected(true);
+						}
+						break;
+					case 1:
+						if (mSStates[i1].equals("0")) {
+							mSMonshiro.setSelected(false);
+						} else {
+							mSMonshiro.setSelected(true);
+						}
+						break;
+					case 2:
+						if (mSStates[i1].equals("0")) {
+							mSMonCont.setSelected(false);
+						} else {
+							mSMonCont.setSelected(true);
+						}
+						break;
+					case 3:
+						if (mSStates[i1].equals("0")) {
+							mSMargit.setSelected(false);
+						} else {
+							mSMargit.setSelected(true);
+						}
+						break;
+					case 4:
+						if (mSStates[i1].equals("0")) {
+							mSMarCont.setSelected(false);
+						} else {
+							mSMarCont.setSelected(true);
+						}
+						break;
+					case 5:
+						if (mSStates[i1].equals("0")) {
+							mSTsubame.setSelected(false);
+						} else {
+							mSTsubame.setSelected(true);
+						}
+						break;
+					case 6:
+						if (mSStates[i1].equals("0")) {
+							mSTsuCont1.setSelected(false);
+						} else {
+							mSTsuCont1.setSelected(true);
+						}
+						break;
+					case 7:
+						if (mSStates[i1].equals("0")) {
+							mSTsuCont2.setSelected(false);
+						} else {
+							mSTsuCont2.setSelected(true);
+						}
+						break;
+					case 8:
+						if (mSStates[i1].equals("0")) {
+							mSIyo.setSelected(false);
+						} else {
+							mSIyo.setSelected(true);
+						}
+						break;
+					case 9:
+						if (mSStates[i1].equals("0")) {
+							mSShima.setSelected(false);
+						} else {
+							mSShima.setSelected(true);
+						}
+						break;
+					case 10:
+						if (mSStates[i1].equals("0")) {
+							mSMaids.setSelected(false);
+						} else {
+							mSMaids.setSelected(true);
+						}
+						break;
+					case 11:
+						if (mSStates[i1].equals("0")) {
+							mSKazamaFam.setSelected(false);
+						} else {
+							mSKazamaFam.setSelected(true);
+						}
+						break;
+					case 12:
+						if (mSStates[i1].equals("0")) {
+							mSTatsuko.setSelected(false);
+						} else {
+							mSTatsuko.setSelected(true);
+						}
+						break;
+					case 13:
+						if (mSStates[i1].equals("0")) {
+							mSYumiko.setSelected(false);
+						} else {
+							mSYumiko.setSelected(true);
+						}
+						break;
+					case 14:
+						if (mSStates[i1].equals("0")) {
+							mSDevotedCrabs.setSelected(false);
+						} else {
+							mSDevotedCrabs.setSelected(true);
+						}
+						break;
+					case 15:
+						if (mSStates[i1].equals("0")) {
+							mSFMiyako1.setSelected(false);
+						} else {
+							mSFMiyako1.setSelected(true);
+						}
+						break;
+					case 16:
+						if (mSStates[i1].equals("0")) {
+							mSFMiyako2.setSelected(false);
+						} else {
+							mSFMiyako2.setSelected(true);
+						}
+						break;
+					case 17:
+						if (mSStates[i1].equals("0")) {
+							mSFMiyako3.setSelected(false);
+						} else {
+							mSFMiyako3.setSelected(true);
+						}
+						break;
+					case 18:
+						if (mSStates[i1].equals("0")) {
+							mSChousokabe.setSelected(false);
+						} else {
+							mSChousokabe.setSelected(true);
+						}
+						break;
+					case 19:
+						if (mSStates[i1].equals("0")) {
+							mSKokoro.setSelected(false);
+						} else {
+							mSKokoro.setSelected(true);
+						}
+						break;
+					case 20:
+						if (mSStates[i1].equals("0")) {
+							mSNoRelationship.setSelected(false);
+						} else {
+							mSNoRelationship.setSelected(true);
+						}
+						break;
+					case 21:
+						if (mSStates[i1].equals("0")) {
+							mSKosugi.setSelected(false);
+						} else {
+							mSKosugi.setSelected(true);
+						}
+						break;
+					case 22:
+						if (mSStates[i1].equals("0")) {
+							mSKosugiCont.setSelected(false);
+						} else {
+							mSKosugiCont.setSelected(true);
+						}
+						break;
+					case 23:
+						if (mSStates[i1].equals("0")) {
+							mSChildhood.setSelected(false);
+						} else {
+							mSChildhood.setSelected(true);
+						}
+						break;
+					case 24:
+						if (mSStates[i1].equals("0")) {
+							mSKoyuki.setSelected(false);
+						} else {
+							mSKoyuki.setSelected(true);
+						}
+						break;
+					case 25:
+						if (mSStates[i1].equals("0")) {
+							mSFKoyuki.setSelected(false);
+						} else {
+							mSFKoyuki.setSelected(true);
+						}
+						break;
+					case 26:
+						if (mSStates[i1].equals("0")) {
+							mSAcqTakae.setSelected(false);
+						} else {
+							mSAcqTakae.setSelected(true);
+						}
+						break;
+					case 27:
+						if (mSStates[i1].equals("0")) {
+							mSMonshiroAfter.setSelected(false);
+						} else {
+							mSMonshiroAfter.setSelected(true);
+						}
+						break;
+					case 28:
+						if (mSStates[i1].equals("0")) {
+							mSKazukoAfter.setSelected(false);
+						} else {
+							mSKazukoAfter.setSelected(true);
+						}
+						break;
+					case 29:
+						if (mSStates[i1].equals("0")) {
+							mSMomoyoAfter.setSelected(false);
+						} else {
+							mSMomoyoAfter.setSelected(true);
+						}
+						break;
+					case 30:
+						if (mSStates[i1].equals("0")) {
+							mSMiyakoAfter.setSelected(false);
+						} else {
+							mSMiyakoAfter.setSelected(true);
+						}
+						break;
+					case 31:
+						if (mSStates[i1].equals("0")) {
+							mSYukieAfter.setSelected(false);
+						} else {
+							mSYukieAfter.setSelected(true);
+						}
+						break;
+					case 32:
+						if (mSStates[i1].equals("0")) {
+							mSChrisAfter.setSelected(false);
+						} else {
+							mSChrisAfter.setSelected(true);
+						}
+						break;
+					case 33:
+						if (mSStates[i1].equals("0")) {
+							mSTsuCont1After.setSelected(false);
+						} else {
+							mSTsuCont1After.setSelected(true);
+						}
+						break;
+					case 34:
+						if (mSStates[i1].equals("0")) {
+							mSTsuCont2After.setSelected(false);
+						} else {
+							mSTsuCont2After.setSelected(true);
+						}
+						break;
+					case 35:
+						if (mSStates[i1].equals("0")) {
+							mSHermitCrabsAfter.setSelected(false);
+						} else {
+							mSHermitCrabsAfter.setSelected(true);
+						}
+						break;
+					case 36:
+						if (mSStates[i1].equals("0")) {
+							mSAgaveAfter.setSelected(false);
+						} else {
+							mSAgaveAfter.setSelected(true);
+						}
+						break;
+					default: break;
+					}
+				}
+				
 				// MAJIKOI A-1
 				for (int i2 = 0; i2 < mA1States.length; i2++) {
 					switch (i2) {
@@ -825,6 +1325,7 @@ public class MajikoiRoutes extends JFrame {
 				    	
 				    	// Write m1States to State.txt
 				        try {
+				        	if (d == true) Arrays.fill(m1States, "0");
 							BufferedWriter bw = new BufferedWriter(new FileWriter(m1State));
 							//System.out.println("M1");
 							for (int i = 0; i < m1States.length; i++) {
@@ -834,9 +1335,239 @@ public class MajikoiRoutes extends JFrame {
 							}
 							bw.close();
 						} catch (IOException e) {
-							// TODO Auto-generated catch block
 							e.printStackTrace();
 						}
+			    	}
+			    	
+			    	// MAJIKOI S
+			    	
+			    	if (mSStates.length > 0) {
+			    		if (mSCommon.isSelected()) {
+			    			mSStates[0] = "1";
+			    		} else if (!mSCommon.isSelected()) {
+			    			mSStates[0] = "0";
+			    		}
+			    		
+			    		if (mSMonshiro.isSelected()) {
+			    			mSStates[1] = "1";
+			    		} else if (!mSMonshiro.isSelected()) {
+			    			mSStates[1] = "0";
+			    		}
+			    		
+			    		if (mSMonCont.isSelected()) {
+			    			mSStates[2] = "1";
+			    		} else if (!mSMonCont.isSelected()) {
+			    			mSStates[2] = "0";
+			    		}
+			    		
+			    		if (mSMargit.isSelected()) {
+			    			mSStates[3] = "1";
+			    		} else if (!mSMargit.isSelected()) {
+			    			mSStates[3] = "0";
+			    		}
+			    		
+			    		if (mSMarCont.isSelected()) {
+			    			mSStates[4] = "1";
+			    		} else if (!mSMarCont.isSelected()) {
+			    			mSStates[4] = "0";
+			    		}
+			    		
+			    		if (mSTsubame.isSelected()) {
+			    			mSStates[5] = "1";
+			    		} else if (!mSTsubame.isSelected()) {
+			    			mSStates[5] = "0";
+			    		}
+			    		
+			    		if (mSTsuCont1.isSelected()) {
+			    			mSStates[6] = "1";
+			    		} else if (!mSTsuCont1.isSelected()) {
+			    			mSStates[6] = "0";
+			    		}
+			    		
+			    		if (mSTsuCont2.isSelected()) {
+			    			mSStates[7] = "1";
+			    		} else if (!mSTsuCont2.isSelected()) {
+			    			mSStates[7] = "0";
+			    		}
+			    		
+			    		if (mSIyo.isSelected()) {
+			    			mSStates[8] = "1";
+			    		} else if (!mSIyo.isSelected()) {
+			    			mSStates[8] = "0";
+			    		}
+			    		
+			    		if (mSShima.isSelected()) {
+			    			mSStates[9] = "1";
+			    		} else if (!mSShima.isSelected()) {
+			    			mSStates[9] = "0";
+			    		}
+
+			    		if (mSMaids.isSelected()) {
+			    			mSStates[10] = "1";
+			    		} else if (!mSMaids.isSelected()) {
+			    			mSStates[10] = "0";
+			    		}
+			    		
+			    		if (mSKazamaFam.isSelected()) {
+			    			mSStates[11] = "1";
+			    		} else if (!mSKazamaFam.isSelected()) {
+			    			mSStates[11] = "0";
+			    		}
+			    		
+			    		if (mSTatsuko.isSelected()) {
+			    			mSStates[12] = "1";
+			    		} else if (!mSTatsuko.isSelected()) {
+			    			mSStates[12] = "0";
+			    		}
+			    		
+			    		if (mSYumiko.isSelected()) {
+			    			mSStates[13] = "1";
+			    		} else if (!mSYumiko.isSelected()) {
+			    			mSStates[13] = "0";
+			    		}
+			    		
+			    		if (mSDevotedCrabs.isSelected()) {
+			    			mSStates[14] = "1";
+			    		} else if (!mSDevotedCrabs.isSelected()) {
+			    			mSStates[14] = "0";
+			    		}
+			    		
+			    		if (mSFMiyako1.isSelected()) {
+			    			mSStates[15] = "1";
+			    		} else if (!mSFMiyako1.isSelected()) {
+			    			mSStates[15] = "0";
+			    		}
+			    		
+			    		if (mSFMiyako2.isSelected()) {
+			    			mSStates[16] = "1";
+			    		} else if (!mSFMiyako2.isSelected()) {
+			    			mSStates[16] = "0";
+			    		}
+			    		
+			    		if (mSFMiyako3.isSelected()) {
+			    			mSStates[17] = "1";
+			    		} else if (!mSFMiyako3.isSelected()) {
+			    			mSStates[17] = "0";
+			    		}
+			    		
+			    		if (mSChousokabe.isSelected()) {
+			    			mSStates[18] = "1";
+			    		} else if (!mSChousokabe.isSelected()) {
+			    			mSStates[18] = "0";
+			    		}
+			    		
+			    		if (mSKokoro.isSelected()) {
+			    			mSStates[19] = "1";
+			    		} else if (!mSKokoro.isSelected()) {
+			    			mSStates[19] = "0";
+			    		}
+			    		
+			    		if (mSNoRelationship.isSelected()) {
+			    			mSStates[20] = "1";
+			    		} else if (!mSNoRelationship.isSelected()) {
+			    			mSStates[20] = "0";
+			    		}
+			    		
+			    		if (mSKosugi.isSelected()) {
+			    			mSStates[21] = "1";
+			    		} else if (!mSKosugi.isSelected()) {
+			    			mSStates[21] = "0";
+			    		}
+			    		
+			    		if (mSKosugiCont.isSelected()) {
+			    			mSStates[22] = "1";
+			    		} else if (!mSKosugiCont.isSelected()) {
+			    			mSStates[22] = "0";
+			    		}
+			    		
+			    		if (mSChildhood.isSelected()) {
+			    			mSStates[23] = "1";
+			    		} else if (!mSChildhood.isSelected()) {
+			    			mSStates[23] = "0";
+			    		}
+			    		
+			    		if (mSKoyuki.isSelected()) {
+			    			mSStates[24] = "1";
+			    		} else if (!mSKoyuki.isSelected()) {
+			    			mSStates[24] = "0";
+			    		}
+			    		
+			    		if (mSFKoyuki.isSelected()) {
+			    			mSStates[25] = "1";
+			    		} else if (!mSFKoyuki.isSelected()) {
+			    			mSStates[25] = "0";
+			    		}
+			    		
+			    		if (mSAcqTakae.isSelected()) {
+			    			mSStates[26] = "1";
+			    		} else if (!mSAcqTakae.isSelected()) {
+			    			mSStates[26] = "0";
+			    		}
+			    		
+			    		if (mSMonshiroAfter.isSelected()) {
+			    			mSStates[27] = "1";
+			    		} else if (!mSMonshiroAfter.isSelected()) {
+			    			mSStates[27] = "0";
+			    		}
+			    		
+			    		if (mSKazukoAfter.isSelected()) {
+			    			mSStates[28] = "1";
+			    		} else if (!mSKazukoAfter.isSelected()) {
+			    			mSStates[28] = "0";
+			    		}
+			    		
+			    		if (mSMomoyoAfter.isSelected()) {
+			    			mSStates[29] = "1";
+			    		} else if (!mSMomoyoAfter.isSelected()) {
+			    			mSStates[29] = "0";
+			    		}
+			    		
+			    		if (mSMiyakoAfter.isSelected()) {
+			    			mSStates[30] = "1";
+			    		} else if (!mSMiyakoAfter.isSelected()) {
+			    			mSStates[30] = "0";
+			    		}
+			    		
+			    		if (mSYukieAfter.isSelected()) {
+			    			mSStates[31] = "1";
+			    		} else if (!mSYukieAfter.isSelected()) {
+			    			mSStates[31] = "0";
+			    		}
+			    		
+			    		if (mSChrisAfter.isSelected()) {
+			    			mSStates[32] = "1";
+			    		} else if (!mSChrisAfter.isSelected()) {
+			    			mSStates[32] = "0";
+			    		}
+			    		
+			    		if (mSTsuCont1After.isSelected()) {
+			    			mSStates[33] = "1";
+			    		} else if (!mSTsuCont1After.isSelected()) {
+			    			mSStates[33] = "0";
+			    		}
+			    		if (mSHermitCrabsAfter.isSelected()) {
+			    			mSStates[34] = "1";
+			    		} else if (!mSHermitCrabsAfter.isSelected()) {
+			    			mSStates[34] = "0";
+			    		}
+			    		
+			    		if (mSAgaveAfter.isSelected()) {
+			    			mSStates[35] = "1";
+			    		} else if (!mSAgaveAfter.isSelected()) {
+			    			mSStates[35] = "0";
+			    		}
+			    	}
+			    	
+			    	try {
+			    		if (d == true) Arrays.fill(mSStates, "0");
+			    		BufferedWriter bw = new BufferedWriter(new FileWriter(mSState));
+			    		for (int i = 0; i < mSStates.length; i++) {
+			    			bw.write(mSStates[i]);
+			    			bw.newLine();
+			    		}
+			    		bw.close();
+			    	} catch (Exception e) {
+			    		e.printStackTrace();
 			    	}
 			    	
 			    	// MAJIKOI A-1
@@ -861,6 +1592,7 @@ public class MajikoiRoutes extends JFrame {
 			    		}
 			    		
 			    		try {
+			    			if (d == true) Arrays.fill(mA1States, "0");
 			    			BufferedWriter bw = new BufferedWriter(new FileWriter(mA1State));
 			    			//System.out.println("M-A1");
 			    			for (int i = 0; i < mA1States.length; i++) {
@@ -896,6 +1628,7 @@ public class MajikoiRoutes extends JFrame {
 			    		}
 			    		
 			    		try {
+			    			if (d == true) Arrays.fill(mA2States, "0");
 			    			BufferedWriter bw = new BufferedWriter(new FileWriter(mA2State));
 			    			//System.out.println("M-A1");
 			    			for (int i = 0; i < mA2States.length; i++) {
@@ -931,6 +1664,7 @@ public class MajikoiRoutes extends JFrame {
 			    		}
 			    		
 						try {
+							if (d == true) Arrays.fill(mA3States, "0");
 							BufferedWriter bw = new BufferedWriter(new FileWriter(mA3State));
 							//System.out.println("M-A1");
 							for (int i = 0; i < mA3States.length; i++) {
@@ -944,8 +1678,23 @@ public class MajikoiRoutes extends JFrame {
 						}
 					}
 			    	
+					
 			        System.exit(0);
 			    }
+			});
+			
+			mDeleteData.addActionListener((ActionEvent e) -> {
+				int q = JOptionPane.showConfirmDialog(this, "Delete files?\nThis will reset all checked boxes upon next open.", "Delete", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
+				if (q == JOptionPane.YES_OPTION) {
+					m1State.delete();
+					mSState.delete();
+					mA1State.delete();
+					mA2State.delete();
+					mA3State.delete();
+					mA4State.delete();
+					mA5State.delete();
+					d = true;
+				}
 			});
 	}
 }
