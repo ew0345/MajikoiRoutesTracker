@@ -521,11 +521,30 @@ public class MajikoiRoutes extends JFrame {
 			majikoiA3.add(mA3Tsubame);
 			
 		// MAJIKOI A-4
-			// TODO
 			
 			JPanel majikoiA4 = new JPanel(false);
 			majikoiA4.setLayout(null);
 			tabbedPane.addTab("Majikoi A-4", majikoiA4);
+			
+			JLabel lin = new JLabel("Lin");
+			lin.setBounds(10, 10, 47, 14);
+			lin.setFont(new Font("Tahoma", Font.PLAIN, 17));
+			majikoiA4.add(lin);
+			
+			JCheckBox mA4Lin = new JCheckBox("Completed");
+			mA4Lin.setFont(new Font("Tahoma", Font.PLAIN, 15));
+			mA4Lin.setBounds(8, 33, 97, 23);
+			majikoiA4.add(mA4Lin);
+			
+			JLabel homura = new JLabel("Homura");
+			homura.setFont(new Font("Tahoma", Font.PLAIN, 17));
+			homura.setBounds(147, 6, 97, 23);
+			majikoiA4.add(homura);
+			
+			JCheckBox mA4Homura = new JCheckBox("Completed");
+			mA4Homura.setFont(new Font("Tahoma", Font.PLAIN, 15));
+			mA4Homura.setBounds(147, 34, 97, 23);
+			majikoiA4.add(mA4Homura);
 			
 			
 		
@@ -712,6 +731,30 @@ public class MajikoiRoutes extends JFrame {
 			br4.close();
 			String[] mA3States = mA3StatesList.toArray(new String[0]);
 			
+			// Read State file for MAJIKOI A-4
+			if (!mA4State.exists()) {
+				mA4State.createNewFile();
+				BufferedWriter bw = new BufferedWriter(new FileWriter(mA4State));
+				//System.out.println("M-A4");
+				for (int i = 0; i < 2; i++) {
+					//System.out.println(i);
+					bw.write("0");
+					bw.newLine();
+				}
+				bw.close();
+			}
+			
+			List<String> mA4StatesList = new ArrayList<String>();
+			BufferedReader br5 = new BufferedReader(new FileReader(mA4State));
+			String line5 = br5.readLine();
+			//System.out.println("M-A4");
+			while (line5 != null) {
+				mA4StatesList.add(line5);
+				//System.out.println(line5);
+				line5 = br5.readLine();
+			}
+			br5.close();
+			String[] mA4States = mA4StatesList.toArray(new String[0]);
 			
 			
 			// MAJIKOI 1
@@ -1203,6 +1246,27 @@ public class MajikoiRoutes extends JFrame {
 					}
 				}
 				
+				// MAJIKOI A-4
+				for (int i5 = 0; i5 < mA4States.length; i5++) {
+					switch(i5) {
+					case 0:
+						if (mA4States[i5].equals("0")) {
+							mA4Lin.setSelected(false);
+						} else {
+							mA4Lin.setSelected(true);
+						}
+						break;
+					case 1:
+						if (mA4States[i5].equals("0")) {
+							mA4Homura.setSelected(false);
+						} else {
+							mA4Homura.setSelected(true);
+						}
+						break;
+					default: break;
+					}
+				}
+				
 			}
 	
 			addWindowListener(new java.awt.event.WindowAdapter() {
@@ -1644,7 +1708,7 @@ public class MajikoiRoutes extends JFrame {
 			    	
 			    	// MAJIKOI A-3
 			    	
-					if (mA1States.length > 0) {
+					if (mA3States.length > 0) {
 						if (mA3Lee.isSelected()) {
 			    			mA3States[0] = "1";
 			    		} else if (!mA3Lee.isSelected()) {
@@ -1666,7 +1730,7 @@ public class MajikoiRoutes extends JFrame {
 						try {
 							if (d == true) Arrays.fill(mA3States, "0");
 							BufferedWriter bw = new BufferedWriter(new FileWriter(mA3State));
-							//System.out.println("M-A1");
+							//System.out.println("M-A3");
 							for (int i = 0; i < mA3States.length; i++) {
 								//System.out.println(mA3States[i]);
 								bw.write(mA3States[i]);
@@ -1676,6 +1740,35 @@ public class MajikoiRoutes extends JFrame {
 						} catch (IOException e) {
 							e.printStackTrace();
 						}
+					}
+					
+					// MAJIKOI A-4
+					if (mA4States.length > 0) {
+						if (mA4Lin.isSelected()) {
+							mA4States[0] = "1";
+						} else if (!mA4Lin.isSelected()) {
+							mA4States[0] = "0";
+						}
+						
+						if (mA4Homura.isSelected()) {
+							mA4States[1] = "1";
+						} else if (!mA4Homura.isSelected()) {
+							mA4States[1] = "0";
+						}
+					}
+					
+					try {
+						if (d == true) Arrays.fill(mA4States, "0");
+						BufferedWriter bw = new BufferedWriter(new FileWriter(mA4State));
+						//System.out.println("M-A4");
+						for (int i = 0; i < mA4States.length; i++) {
+							//System.out.println(mA4States[i]);
+							bw.write(mA4States[i]);
+							bw.newLine();
+						}
+						bw.close();
+					} catch (IOException e) {
+						e.printStackTrace();
 					}
 			    	
 					
