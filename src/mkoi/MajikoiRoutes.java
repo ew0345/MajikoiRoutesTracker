@@ -21,18 +21,17 @@ import javax.swing.UIManager;
 import javax.swing.JCheckBox;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
+import java.util.Objects;
 
 import javax.swing.SwingConstants;
 import javax.swing.JButton;
 
 public class MajikoiRoutes extends JFrame {
-	private static final long serialVersionUID = 7201113623508556710L;
+	//private static final long serialVersionUID = 7201113623508556710L;
 
 	final static long startTime = System.currentTimeMillis();
 	
 	static Boolean d = false;
-
-	private JPanel contentPane;
 
 	/**
 	 * Launch the application.
@@ -43,14 +42,12 @@ public class MajikoiRoutes extends JFrame {
 		} catch (Throwable e) {
 			e.printStackTrace();
 		}
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					MajikoiRoutes frame = new MajikoiRoutes();
-					frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
+		EventQueue.invokeLater(() -> {
+			try {
+				MajikoiRoutes frame = new MajikoiRoutes();
+				frame.setVisible(true);
+			} catch (Exception e) {
+				e.printStackTrace();
 			}
 		});
 		final long endTime = System.currentTimeMillis();
@@ -66,7 +63,7 @@ public class MajikoiRoutes extends JFrame {
 			setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 			setBounds(0, 0, 800, 600);
 			setLocationRelativeTo(null);
-			contentPane = new JPanel();
+		JPanel contentPane = new JPanel();
 			contentPane.setLayout(null);
 	
 			setContentPane(contentPane);
@@ -591,7 +588,7 @@ public class MajikoiRoutes extends JFrame {
 			about.setLayout(null);
 			tabbedPane.addTab("About", about);
 			
-			JLabel image = new JLabel(new ImageIcon(MajikoiRoutes.class.getResource("/mkoi/Icon3.png")));
+			JLabel image = new JLabel(new ImageIcon(Objects.requireNonNull(MajikoiRoutes.class.getResource("/mkoi/Icon3.png"))));
 			image.setText("Made by Ew0345");
 			image.setFont(new Font("Tahoma", Font.PLAIN, 18));
 			image.setBounds(249, 13, 248, 70);
@@ -639,7 +636,6 @@ public class MajikoiRoutes extends JFrame {
 			File mA4State = new File(System.getProperty("user.home")+"/MajikoiRoutes/mA4State.txt");
 			File mA5State = new File(System.getProperty("user.home")+"/MajikoiRoutes/mA5State.txt");
 					
-			
 			fDir.mkdirs();
 			
 			// Read State file for MAJIKOI 1
@@ -654,7 +650,7 @@ public class MajikoiRoutes extends JFrame {
 				}
 				bw.close();
 	    	}
-			List<String> m1StatesList = new ArrayList<String>();
+			List<String> m1StatesList = new ArrayList<>();
 			BufferedReader br = new BufferedReader(new FileReader(m1State));
 			String line = br.readLine();
 			//System.out.println("M1");
@@ -676,7 +672,7 @@ public class MajikoiRoutes extends JFrame {
 				}
 				bw.close();
 			}
-			List<String> mSStatesList = new ArrayList<String>();
+			List<String> mSStatesList = new ArrayList<>();
 			BufferedReader br1 = new BufferedReader(new FileReader(mSState));
 			String line1 = br1.readLine();
 			while (line1 != null) {
@@ -699,7 +695,7 @@ public class MajikoiRoutes extends JFrame {
 				bw.close();
 	    	}
 			
-			List<String> mA1StatesList = new ArrayList<String>();
+			List<String> mA1StatesList = new ArrayList<>();
 			BufferedReader br2 = new BufferedReader(new FileReader(mA1State));
 			String line2 = br2.readLine();
 			//System.out.println("M-A1");
@@ -724,7 +720,7 @@ public class MajikoiRoutes extends JFrame {
 				bw.close();
 	    	}
 			
-			List<String> mA2StatesList = new ArrayList<String>();
+			List<String> mA2StatesList = new ArrayList<>();
 			BufferedReader br3 = new BufferedReader(new FileReader(mA2State));
 			String line3 = br3.readLine();
 			//System.out.println("M-A2");
@@ -749,7 +745,7 @@ public class MajikoiRoutes extends JFrame {
 				bw.close();
 	    	}
 			
-			List<String> mA3StatesList = new ArrayList<String>();
+			List<String> mA3StatesList = new ArrayList<>();
 			BufferedReader br4 = new BufferedReader(new FileReader(mA3State));
 			String line4 = br4.readLine();
 			//System.out.println("M-A3");
@@ -774,7 +770,7 @@ public class MajikoiRoutes extends JFrame {
 				bw.close();
 			}
 			
-			List<String> mA4StatesList = new ArrayList<String>();
+			List<String> mA4StatesList = new ArrayList<>();
 			BufferedReader br5 = new BufferedReader(new FileReader(mA4State));
 			String line5 = br5.readLine();
 			//System.out.println("M-A4");
@@ -785,518 +781,291 @@ public class MajikoiRoutes extends JFrame {
 			}
 			br5.close();
 			String[] mA4States = mA4StatesList.toArray(new String[0]);
+
+			// Read State File for MAJIKOI A-5
+			if (!mA5State.exists()) {
+				mA5State.createNewFile();
+				BufferedWriter bw = new BufferedWriter(new FileWriter(mA5State));
+				//System.out.println("M-A5");
+				for (int i = 0; i < 3; i++) {
+					//System.out.println(i);
+					bw.write("0");
+					bw.newLine();
+				}
+				bw.close();
+			}
+
+			List<String> mA5StatesList = new ArrayList<>();
+			BufferedReader br6 = new BufferedReader(new FileReader(mA5State));
+			String line6 = br6.readLine();
+			//System.out.println("M-A5");
+			while (line6 != null) {
+				mA5StatesList.add(line6);
+				//System.out.println(line6);
+				line6 = br6.readLine();
+			}
+			br6.close();
+			String[] mA5States = mA5StatesList.toArray(new String[0]);
 			
 			
 			// MAJIKOI 1
 			for (int i = 0; i < m1States.length; i++) {
-				switch(i) {
+				switch (i) {
+					case 0:
+						m1Momoyo.setSelected(!m1States[i].equals("0"));
+						break;
+					case 1:
+						m1Chris.setSelected(!m1States[i].equals("0"));
+						break;
+					case 2:
+						m1Miyako.setSelected(!m1States[i].equals("0"));
+						break;
+					case 3:
+						m1Yukie.setSelected(!m1States[i].equals("0"));
+						break;
+					case 4:
+						m1Kazuko.setSelected(!m1States[i].equals("0"));
+						break;
+					case 5:
+						m1Kojima.setSelected(!m1States[i].equals("0"));
+						break;
+					case 6:
+						m1Chika.setSelected(!m1States[i].equals("0"));
+						break;
+					case 7:
+						m1Moro.setSelected(!m1States[i].equals("0"));
+						break;
+					case 8:
+						m1Capt.setSelected(!m1States[i].equals("0"));
+						break;
+					case 9:
+						m1Gakuto.setSelected(!m1States[i].equals("0"));
+						break;
+					case 10:
+						m1HermitCrabs.setSelected(!m1States[i].equals("0"));
+						break;
+					case 11:
+						m1NoRelationship.setSelected(!m1States[i].equals("0"));
+						break;
+					case 12:
+						m1Mayo.setSelected(!m1States[i].equals("0"));
+						break;
+					case 13:
+						m1TutorialRoom.setSelected(!m1States[i].equals("0"));
+						break;
+					case 14:
+						m1Agave.setSelected(!m1States[i].equals("0"));
+						break;
+					case 15:
+						m1MomoyoAfter.setSelected(!m1States[i].equals("0"));
+						break;
+					case 16:
+						m1MiyakoAfter.setSelected(!m1States[i].equals("0"));
+						break;
+					case 17:
+						m1YukieAfter.setSelected(!m1States[i].equals("0"));
+						break;
+					case 18:
+						m1KazukoAfter.setSelected(!m1States[i].equals("0"));
+						break;
+					default:
+						break;
+				}
+			}
+
+			// MAJIKOI S
+			for (int i1 = 0; i1 < mSStates.length; i1++) {
+				switch (i1) {
 				case 0:
-					if (m1States[i].equals("0")) {
-						m1Momoyo.setSelected(false);
-					} else {
-						m1Momoyo.setSelected(true);
-					}
+					mSCommon.setSelected(!mSStates[i1].equals("0"));
 					break;
 				case 1:
-					if (m1States[i].equals("0")) {
-						m1Chris.setSelected(false);
-					} else {
-						m1Chris.setSelected(true);
-					}
+					mSMonshiro.setSelected(!mSStates[i1].equals("0"));
 					break;
 				case 2:
-					if (m1States[i].equals("0")) {
-						m1Miyako.setSelected(false);
-					} else {
-						m1Miyako.setSelected(true);
-					}
+					mSMonCont.setSelected(!mSStates[i1].equals("0"));
 					break;
 				case 3:
-					if (m1States[i].equals("0")) {
-						m1Yukie.setSelected(false);
-					} else {
-						m1Yukie.setSelected(true);
-					}
+					mSMargit.setSelected(!mSStates[i1].equals("0"));
 					break;
 				case 4:
-					if (m1States[i].equals("0")) {
-						m1Kazuko.setSelected(false);
-					} else {
-						m1Kazuko.setSelected(true);
-					}
+					mSMarCont.setSelected(!mSStates[i1].equals("0"));
 					break;
 				case 5:
-					if (m1States[i].equals("0")) {
-						m1Kojima.setSelected(false);
-					} else {
-						m1Kojima.setSelected(true);
-					}
+					mSTsubame.setSelected(!mSStates[i1].equals("0"));
 					break;
 				case 6:
-					if (m1States[i].equals("0")) {
-						m1Chika.setSelected(false);
-					} else {
-						m1Chika.setSelected(true);
-					}
+					mSTsuCont1.setSelected(!mSStates[i1].equals("0"));
 					break;
 				case 7:
-					if (m1States[i].equals("0")) {
-						m1Moro.setSelected(false);
-					} else {
-						m1Moro.setSelected(true);
-					}
+					mSTsuCont2.setSelected(!mSStates[i1].equals("0"));
 					break;
 				case 8:
-					if (m1States[i].equals("0")) {
-						m1Capt.setSelected(false);
-					} else {
-						m1Capt.setSelected(true);
-					}
+					mSIyo.setSelected(!mSStates[i1].equals("0"));
 					break;
 				case 9:
-					if (m1States[i].equals("0")) {
-						m1Gakuto.setSelected(false);
-					} else {
-						m1Gakuto.setSelected(true);
-					}
+					mSShima.setSelected(!mSStates[i1].equals("0"));
 					break;
 				case 10:
-					if (m1States[i].equals("0")) {
-						m1HermitCrabs.setSelected(false);
-					} else {
-						m1HermitCrabs.setSelected(true);
-					}
+					mSMaids.setSelected(!mSStates[i1].equals("0"));
 					break;
 				case 11:
-					if (m1States[i].equals("0")) {
-						m1NoRelationship.setSelected(false);
-					} else {
-						m1NoRelationship.setSelected(true);
-					}
+					mSKazamaFam.setSelected(!mSStates[i1].equals("0"));
 					break;
 				case 12:
-					if (m1States[i].equals("0")) {
-						m1Mayo.setSelected(false);
-					} else {
-						m1Mayo.setSelected(true);
-					}
+					mSTatsuko.setSelected(!mSStates[i1].equals("0"));
 					break;
 				case 13:
-					if (m1States[i].equals("0")) {
-						m1TutorialRoom.setSelected(false);
-					} else {
-						m1TutorialRoom.setSelected(true);
-					}
+					mSYumiko.setSelected(!mSStates[i1].equals("0"));
 					break;
 				case 14:
-					if (m1States[i].equals("0")) {
-						m1Agave.setSelected(false);
-					} else {
-						m1Agave.setSelected(true);
-					}
+					mSDevotedCrabs.setSelected(!mSStates[i1].equals("0"));
 					break;
 				case 15:
-					if (m1States[i].equals("0")) {
-						m1MomoyoAfter.setSelected(false);
-					} else {
-						m1MomoyoAfter.setSelected(true);
-					}
+					mSFMiyako1.setSelected(!mSStates[i1].equals("0"));
 					break;
 				case 16:
-					if (m1States[i].equals("0")) {
-						m1MiyakoAfter.setSelected(false);
-					} else {
-						m1MiyakoAfter.setSelected(true);
-					}
+					mSFMiyako2.setSelected(!mSStates[i1].equals("0"));
 					break;
 				case 17:
-					if (m1States[i].equals("0")) {
-						m1YukieAfter.setSelected(false);
-					} else {
-						m1YukieAfter.setSelected(true);
-					}
+					mSFMiyako3.setSelected(!mSStates[i1].equals("0"));
 					break;
 				case 18:
-					if (m1States[i].equals("0")) {
-						m1KazukoAfter.setSelected(false);
-					} else {
-						m1KazukoAfter.setSelected(true);
-					}
+					mSChousokabe.setSelected(!mSStates[i1].equals("0"));
+					break;
+				case 19:
+					mSKokoro.setSelected(!mSStates[i1].equals("0"));
+					break;
+				case 20:
+					mSNoRelationship.setSelected(!mSStates[i1].equals("0"));
+					break;
+				case 21:
+					mSKosugi.setSelected(!mSStates[i1].equals("0"));
+					break;
+				case 22:
+					mSKosugiCont.setSelected(!mSStates[i1].equals("0"));
+					break;
+				case 23:
+					mSChildhood.setSelected(!mSStates[i1].equals("0"));
+					break;
+				case 24:
+					mSKoyuki.setSelected(!mSStates[i1].equals("0"));
+					break;
+				case 25:
+					mSFKoyuki.setSelected(!mSStates[i1].equals("0"));
+					break;
+				case 26:
+					mSAcqTakae.setSelected(!mSStates[i1].equals("0"));
+					break;
+				case 27:
+					mSMonshiroAfter.setSelected(!mSStates[i1].equals("0"));
+					break;
+				case 28:
+					mSKazukoAfter.setSelected(!mSStates[i1].equals("0"));
+					break;
+				case 29:
+					mSMomoyoAfter.setSelected(!mSStates[i1].equals("0"));
+					break;
+				case 30:
+					mSMiyakoAfter.setSelected(!mSStates[i1].equals("0"));
+					break;
+				case 31:
+					mSYukieAfter.setSelected(!mSStates[i1].equals("0"));
+					break;
+				case 32:
+					mSChrisAfter.setSelected(!mSStates[i1].equals("0"));
+					break;
+				case 33:
+					mSTsuCont1After.setSelected(!mSStates[i1].equals("0"));
+					break;
+				case 34:
+					mSTsuCont2After.setSelected(!mSStates[i1].equals("0"));
+					break;
+				case 35:
+					mSHermitCrabsAfter.setSelected(!mSStates[i1].equals("0"));
+					break;
+				case 36:
+					mSAgaveAfter.setSelected(!mSStates[i1].equals("0"));
 					break;
 				default: break;
 				}
-				
-				// MAJIKOI S
-				for (int i1 = 0; i1 < mSStates.length; i1++) {
-					switch (i1) {
+			}
+
+			// MAJIKOI A-1
+			for (int i2 = 0; i2 < mA1States.length; i2++) {
+				switch (i2) {
+				case 0:
+					mA1Benki.setSelected(!mA1States[i2].equals("0"));
+					break;
+				case 1:
+					mA1Azumi.setSelected(!mA1States[i2].equals("0"));
+					break;
+				case 2:
+					mA1Sayaka.setSelected(!mA1States[i2].equals("0"));
+					break;
+				default: break;
+				}
+			}
+
+			// MAJIKOI A-2
+			for (int i3 = 0; i3 < mA2States.length; i3++) {
+				switch (i3) {
+				case 0:
+					mA2Monshiro.setSelected(!mA2States[i3].equals("0"));
+					break;
+				case 1:
+					mA2Aiess.setSelected(!mA2States[i3].equals("0"));
+					break;
+				case 2:
+					mA2Seiso.setSelected(!mA2States[i3].equals("0"));
+					break;
+				default: break;
+				}
+			}
+
+			// MAJIKOI A-3
+			for (int i4 = 0; i4 < mA3States.length; i4++) {
+				switch (i4) {
+				case 0:
+					mA3Lee.setSelected(!mA3States[i4].equals("0"));
+					break;
+				case 1:
+					mA3Stacy.setSelected(!mA3States[i4].equals("0"));
+					break;
+				case 2:
+					mA3Tsubame.setSelected(!mA3States[i4].equals("0"));
+					break;
+				default: break;
+				}
+			}
+
+			// MAJIKOI A-4
+			for (int i5 = 0; i5 < mA4States.length; i5++) {
+				switch(i5) {
+				case 0:
+					mA4Lin.setSelected(!mA4States[i5].equals("0"));
+					break;
+				case 1:
+					mA4Homura.setSelected(!mA4States[i5].equals("0"));
+					break;
+				default: break;
+				}
+			}
+
+			// MAJIKOI A-5
+			for (int i6 = 0; i6 < mA5States.length; i6++) {
+				switch(i6) {
 					case 0:
-						if (mSStates[i1].equals("0")) {
-							mSCommon.setSelected(false);
-						} else {
-							mSCommon.setSelected(true);
-						}
+						mA5Yoshitsune.setSelected(!mA5States[i6].equals("0"));
 						break;
 					case 1:
-						if (mSStates[i1].equals("0")) {
-							mSMonshiro.setSelected(false);
-						} else {
-							mSMonshiro.setSelected(true);
-						}
+						mA5Takae.setSelected(!mA5States[i6].equals("0"));
 						break;
 					case 2:
-						if (mSStates[i1].equals("0")) {
-							mSMonCont.setSelected(false);
-						} else {
-							mSMonCont.setSelected(true);
-						}
-						break;
-					case 3:
-						if (mSStates[i1].equals("0")) {
-							mSMargit.setSelected(false);
-						} else {
-							mSMargit.setSelected(true);
-						}
-						break;
-					case 4:
-						if (mSStates[i1].equals("0")) {
-							mSMarCont.setSelected(false);
-						} else {
-							mSMarCont.setSelected(true);
-						}
-						break;
-					case 5:
-						if (mSStates[i1].equals("0")) {
-							mSTsubame.setSelected(false);
-						} else {
-							mSTsubame.setSelected(true);
-						}
-						break;
-					case 6:
-						if (mSStates[i1].equals("0")) {
-							mSTsuCont1.setSelected(false);
-						} else {
-							mSTsuCont1.setSelected(true);
-						}
-						break;
-					case 7:
-						if (mSStates[i1].equals("0")) {
-							mSTsuCont2.setSelected(false);
-						} else {
-							mSTsuCont2.setSelected(true);
-						}
-						break;
-					case 8:
-						if (mSStates[i1].equals("0")) {
-							mSIyo.setSelected(false);
-						} else {
-							mSIyo.setSelected(true);
-						}
-						break;
-					case 9:
-						if (mSStates[i1].equals("0")) {
-							mSShima.setSelected(false);
-						} else {
-							mSShima.setSelected(true);
-						}
-						break;
-					case 10:
-						if (mSStates[i1].equals("0")) {
-							mSMaids.setSelected(false);
-						} else {
-							mSMaids.setSelected(true);
-						}
-						break;
-					case 11:
-						if (mSStates[i1].equals("0")) {
-							mSKazamaFam.setSelected(false);
-						} else {
-							mSKazamaFam.setSelected(true);
-						}
-						break;
-					case 12:
-						if (mSStates[i1].equals("0")) {
-							mSTatsuko.setSelected(false);
-						} else {
-							mSTatsuko.setSelected(true);
-						}
-						break;
-					case 13:
-						if (mSStates[i1].equals("0")) {
-							mSYumiko.setSelected(false);
-						} else {
-							mSYumiko.setSelected(true);
-						}
-						break;
-					case 14:
-						if (mSStates[i1].equals("0")) {
-							mSDevotedCrabs.setSelected(false);
-						} else {
-							mSDevotedCrabs.setSelected(true);
-						}
-						break;
-					case 15:
-						if (mSStates[i1].equals("0")) {
-							mSFMiyako1.setSelected(false);
-						} else {
-							mSFMiyako1.setSelected(true);
-						}
-						break;
-					case 16:
-						if (mSStates[i1].equals("0")) {
-							mSFMiyako2.setSelected(false);
-						} else {
-							mSFMiyako2.setSelected(true);
-						}
-						break;
-					case 17:
-						if (mSStates[i1].equals("0")) {
-							mSFMiyako3.setSelected(false);
-						} else {
-							mSFMiyako3.setSelected(true);
-						}
-						break;
-					case 18:
-						if (mSStates[i1].equals("0")) {
-							mSChousokabe.setSelected(false);
-						} else {
-							mSChousokabe.setSelected(true);
-						}
-						break;
-					case 19:
-						if (mSStates[i1].equals("0")) {
-							mSKokoro.setSelected(false);
-						} else {
-							mSKokoro.setSelected(true);
-						}
-						break;
-					case 20:
-						if (mSStates[i1].equals("0")) {
-							mSNoRelationship.setSelected(false);
-						} else {
-							mSNoRelationship.setSelected(true);
-						}
-						break;
-					case 21:
-						if (mSStates[i1].equals("0")) {
-							mSKosugi.setSelected(false);
-						} else {
-							mSKosugi.setSelected(true);
-						}
-						break;
-					case 22:
-						if (mSStates[i1].equals("0")) {
-							mSKosugiCont.setSelected(false);
-						} else {
-							mSKosugiCont.setSelected(true);
-						}
-						break;
-					case 23:
-						if (mSStates[i1].equals("0")) {
-							mSChildhood.setSelected(false);
-						} else {
-							mSChildhood.setSelected(true);
-						}
-						break;
-					case 24:
-						if (mSStates[i1].equals("0")) {
-							mSKoyuki.setSelected(false);
-						} else {
-							mSKoyuki.setSelected(true);
-						}
-						break;
-					case 25:
-						if (mSStates[i1].equals("0")) {
-							mSFKoyuki.setSelected(false);
-						} else {
-							mSFKoyuki.setSelected(true);
-						}
-						break;
-					case 26:
-						if (mSStates[i1].equals("0")) {
-							mSAcqTakae.setSelected(false);
-						} else {
-							mSAcqTakae.setSelected(true);
-						}
-						break;
-					case 27:
-						if (mSStates[i1].equals("0")) {
-							mSMonshiroAfter.setSelected(false);
-						} else {
-							mSMonshiroAfter.setSelected(true);
-						}
-						break;
-					case 28:
-						if (mSStates[i1].equals("0")) {
-							mSKazukoAfter.setSelected(false);
-						} else {
-							mSKazukoAfter.setSelected(true);
-						}
-						break;
-					case 29:
-						if (mSStates[i1].equals("0")) {
-							mSMomoyoAfter.setSelected(false);
-						} else {
-							mSMomoyoAfter.setSelected(true);
-						}
-						break;
-					case 30:
-						if (mSStates[i1].equals("0")) {
-							mSMiyakoAfter.setSelected(false);
-						} else {
-							mSMiyakoAfter.setSelected(true);
-						}
-						break;
-					case 31:
-						if (mSStates[i1].equals("0")) {
-							mSYukieAfter.setSelected(false);
-						} else {
-							mSYukieAfter.setSelected(true);
-						}
-						break;
-					case 32:
-						if (mSStates[i1].equals("0")) {
-							mSChrisAfter.setSelected(false);
-						} else {
-							mSChrisAfter.setSelected(true);
-						}
-						break;
-					case 33:
-						if (mSStates[i1].equals("0")) {
-							mSTsuCont1After.setSelected(false);
-						} else {
-							mSTsuCont1After.setSelected(true);
-						}
-						break;
-					case 34:
-						if (mSStates[i1].equals("0")) {
-							mSTsuCont2After.setSelected(false);
-						} else {
-							mSTsuCont2After.setSelected(true);
-						}
-						break;
-					case 35:
-						if (mSStates[i1].equals("0")) {
-							mSHermitCrabsAfter.setSelected(false);
-						} else {
-							mSHermitCrabsAfter.setSelected(true);
-						}
-						break;
-					case 36:
-						if (mSStates[i1].equals("0")) {
-							mSAgaveAfter.setSelected(false);
-						} else {
-							mSAgaveAfter.setSelected(true);
-						}
+						mA5Margit.setSelected(!mA5States[i6].equals("0"));
 						break;
 					default: break;
-					}
 				}
-				
-				// MAJIKOI A-1
-				for (int i2 = 0; i2 < mA1States.length; i2++) {
-					switch (i2) {
-					case 0:
-						if (mA1States[i2].equals("0")) {
-							mA1Benki.setSelected(false);
-						} else {
-							mA1Benki.setSelected(true);
-						}
-						break;
-					case 1:
-						if (mA1States[i2].equals("0")) {
-							mA1Azumi.setSelected(false);
-						} else {
-							mA1Azumi.setSelected(true);
-						}
-						break;
-					case 2:
-						if (mA1States[i2].equals("0")) {
-							mA1Sayaka.setSelected(false);
-						} else {
-							mA1Sayaka.setSelected(true);
-						}
-						break;
-					default: break;
-					}
-				}
-				
-				// MAJIKOI A-2
-				for (int i3 = 0; i3 < mA2States.length; i3++) {
-					switch (i3) {
-					case 0:
-						if (mA2States[i3].equals("0")) {
-							mA2Monshiro.setSelected(false);
-						} else {
-							mA2Monshiro.setSelected(true);
-						}
-						break;
-					case 1:
-						if (mA2States[i3].equals("0")) {
-							mA2Aiess.setSelected(false);
-						} else {
-							mA2Aiess.setSelected(true);
-						}
-						break;
-					case 2:
-						if (mA2States[i3].equals("0")) {
-							mA2Seiso.setSelected(false);
-						} else {
-							mA2Seiso.setSelected(true);
-						}
-						break;
-					default: break;
-					}
-				}
-				
-				// MAJIKOI A-3
-				for (int i4 = 0; i4 < mA3States.length; i4++) {
-					switch (i4) {
-					case 0:
-						if (mA3States[i4].equals("0")) {
-							mA3Lee.setSelected(false);
-						} else {
-							mA3Lee.setSelected(true);
-						}
-						break;
-					case 1:
-						if (mA3States[i4].equals("0")) {
-							mA3Stacy.setSelected(false);
-						} else {
-							mA3Stacy.setSelected(true);
-						}
-						break;
-					case 2:
-						if (mA3States[i4].equals("0")) {
-							mA3Tsubame.setSelected(false);
-						} else {
-							mA3Tsubame.setSelected(true);
-						}
-						break;
-					default: break;
-					}
-				}
-				
-				// MAJIKOI A-4
-				for (int i5 = 0; i5 < mA4States.length; i5++) {
-					switch(i5) {
-					case 0:
-						if (mA4States[i5].equals("0")) {
-							mA4Lin.setSelected(false);
-						} else {
-							mA4Lin.setSelected(true);
-						}
-						break;
-					case 1:
-						if (mA4States[i5].equals("0")) {
-							mA4Homura.setSelected(false);
-						} else {
-							mA4Homura.setSelected(true);
-						}
-						break;
-					default: break;
-					}
-				}
-				
 			}
 	
 			addWindowListener(new java.awt.event.WindowAdapter() {
@@ -1419,12 +1188,12 @@ public class MajikoiRoutes extends JFrame {
 				    	
 				    	// Write m1States to State.txt
 				        try {
-				        	if (d == true) Arrays.fill(m1States, "0");
+				        	if (d) Arrays.fill(m1States, "0");
 							BufferedWriter bw = new BufferedWriter(new FileWriter(m1State));
 							//System.out.println("M1");
-							for (int i = 0; i < m1States.length; i++) {
-								//System.out.println(m1States[i]);
-								bw.write(m1States[i]);
+							for (String state : m1States) {
+								//System.out.println(state);
+								bw.write(state);
 								bw.newLine();
 							}
 							bw.close();
@@ -1653,12 +1422,12 @@ public class MajikoiRoutes extends JFrame {
 			    	}
 			    	
 			    	try {
-			    		if (d == true) Arrays.fill(mSStates, "0");
+			    		if (d) Arrays.fill(mSStates, "0");
 			    		BufferedWriter bw = new BufferedWriter(new FileWriter(mSState));
-			    		for (int i = 0; i < mSStates.length; i++) {
-			    			bw.write(mSStates[i]);
-			    			bw.newLine();
-			    		}
+						for (String sState : mSStates) {
+							bw.write(sState);
+							bw.newLine();
+						}
 			    		bw.close();
 			    	} catch (Exception e) {
 			    		e.printStackTrace();
@@ -1686,14 +1455,14 @@ public class MajikoiRoutes extends JFrame {
 			    		}
 			    		
 			    		try {
-			    			if (d == true) Arrays.fill(mA1States, "0");
+			    			if (d) Arrays.fill(mA1States, "0");
 			    			BufferedWriter bw = new BufferedWriter(new FileWriter(mA1State));
 			    			//System.out.println("M-A1");
-			    			for (int i = 0; i < mA1States.length; i++) {
-			    				//System.out.println(mA1States[i]);
-			    				bw.write(mA1States[i]);
-			    				bw.newLine();
-			    			}
+							for (String a1State : mA1States) {
+								//System.out.println(a1State);
+								bw.write(a1State);
+								bw.newLine();
+							}
 			    			bw.close();
 			    		} catch (IOException e) {
 			    			e.printStackTrace();
@@ -1722,14 +1491,14 @@ public class MajikoiRoutes extends JFrame {
 			    		}
 			    		
 			    		try {
-			    			if (d == true) Arrays.fill(mA2States, "0");
+			    			if (d) Arrays.fill(mA2States, "0");
 			    			BufferedWriter bw = new BufferedWriter(new FileWriter(mA2State));
 			    			//System.out.println("M-A1");
-			    			for (int i = 0; i < mA2States.length; i++) {
-			    				//System.out.println(mA2States[i]);
-			    				bw.write(mA2States[i]);
-			    				bw.newLine();
-			    			}
+							for (String a2State : mA2States) {
+								//System.out.println(a2State);
+								bw.write(a2State);
+								bw.newLine();
+							}
 			    			bw.close();
 			    		} catch (IOException e) {
 			    			e.printStackTrace();
@@ -1758,12 +1527,12 @@ public class MajikoiRoutes extends JFrame {
 			    		}
 			    		
 						try {
-							if (d == true) Arrays.fill(mA3States, "0");
+							if (d) Arrays.fill(mA3States, "0");
 							BufferedWriter bw = new BufferedWriter(new FileWriter(mA3State));
 							//System.out.println("M-A3");
-							for (int i = 0; i < mA3States.length; i++) {
-								//System.out.println(mA3States[i]);
-								bw.write(mA3States[i]);
+							for (String a3State : mA3States) {
+								//System.out.println(a3State);
+								bw.write(a3State);
 								bw.newLine();
 							}
 							bw.close();
@@ -1786,14 +1555,48 @@ public class MajikoiRoutes extends JFrame {
 							mA4States[1] = "0";
 						}
 					}
-					
+
 					try {
-						if (d == true) Arrays.fill(mA4States, "0");
+						if (d) Arrays.fill(mA4States, "0");
 						BufferedWriter bw = new BufferedWriter(new FileWriter(mA4State));
 						//System.out.println("M-A4");
-						for (int i = 0; i < mA4States.length; i++) {
-							//System.out.println(mA4States[i]);
-							bw.write(mA4States[i]);
+						for (String a4State : mA4States) {
+							//System.out.println(a4State);
+							bw.write(a4State);
+							bw.newLine();
+						}
+						bw.close();
+					} catch (IOException e) {
+						e.printStackTrace();
+					}
+
+					// MAJIKOI A-5
+					if (mA5States.length > 0) {
+						if (mA5Yoshitsune.isSelected()) {
+							mA5States[0] = "1";
+						} else if (!mA5Yoshitsune.isSelected()) {
+							mA5States[0] = "0";
+						}
+
+						if (mA5Takae.isSelected()) {
+							mA5States[1] = "1";
+						} else if (!mA5Takae.isSelected()) {
+							mA5States[1] = "0";
+						}
+
+						if (mA5Margit.isSelected()) {
+							mA5States[2] = "1";
+						} else if (!mA5Margit.isSelected()) {
+							mA5States[2] = "0";
+						}
+					}
+
+					try {
+						if (d) Arrays.fill(mA5States, "0");
+						BufferedWriter bw = new BufferedWriter(new FileWriter(mA5State));
+						for (String a5State : mA5States) {
+							//System.out.println(a5State);
+							bw.write(a5State);
 							bw.newLine();
 						}
 						bw.close();
