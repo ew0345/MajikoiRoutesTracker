@@ -442,7 +442,7 @@ public class MajikoiRoutes extends JFrame {
 			
 			JCheckBox mA1Sayaka = new JCheckBox("Completed");
 			mA1Sayaka.setFont(new Font("Tahoma", Font.PLAIN, 15));
-			mA1Sayaka.setBounds(264, 34, 97, 23);
+			mA1Sayaka.setBounds(269, 34, 97, 23);
 			majikoiA1.add(mA1Sayaka);
 			
 			
@@ -481,7 +481,7 @@ public class MajikoiRoutes extends JFrame {
 			
 			JCheckBox mA2Seiso = new JCheckBox("Completed");
 			mA2Seiso.setFont(new Font("Tahoma", Font.PLAIN, 15));
-			mA2Seiso.setBounds(264, 34, 97, 23);
+			mA2Seiso.setBounds(269, 34, 97, 23);
 			majikoiA2.add(mA2Seiso);
 			
 		// MAJIKOI A-3
@@ -517,7 +517,7 @@ public class MajikoiRoutes extends JFrame {
 			
 			JCheckBox mA3Tsubame = new JCheckBox("Completed");
 			mA3Tsubame.setFont(new Font("Tahoma", Font.PLAIN, 15));
-			mA3Tsubame.setBounds(264, 34, 97, 23);
+			mA3Tsubame.setBounds(269, 34, 97, 23);
 			majikoiA3.add(mA3Tsubame);
 			
 		// MAJIKOI A-4
@@ -554,6 +554,36 @@ public class MajikoiRoutes extends JFrame {
 			JPanel majikoiA5 = new JPanel(false);
 			majikoiA5.setLayout(null);
 			tabbedPane.addTab("Majikoi A-5", majikoiA5);
+
+			JLabel yoshitsune = new JLabel("Yoshitsune");
+			yoshitsune.setFont(new Font("Tahoma", Font.PLAIN, 17));
+			yoshitsune.setBounds(10, 10, 97, 23);
+			majikoiA5.add(yoshitsune);
+
+			JCheckBox mA5Yoshitsune = new JCheckBox("Completed");
+			mA5Yoshitsune.setFont(new Font("Tahoma", Font.PLAIN, 15));
+			mA5Yoshitsune.setBounds(8, 33, 97, 23);
+			majikoiA5.add(mA5Yoshitsune);
+
+			JLabel takae = new JLabel("Takae");
+			takae.setFont(new Font("Tahoma", Font.PLAIN, 17));
+			takae.setBounds(147, 6, 97, 23);
+			majikoiA5.add(takae);
+
+			JCheckBox mA5Takae = new JCheckBox("Completed");
+			mA5Takae.setFont(new Font("Tahoma", Font.PLAIN, 15));
+			mA5Takae.setBounds(147, 34, 97, 23);
+			majikoiA5.add(mA5Takae);
+
+			JLabel margitAfter = new JLabel("Margit After");
+			margitAfter.setFont(new Font("Tahoma", Font.PLAIN, 15));
+			margitAfter.setBounds(269, 6, 97, 23);
+			majikoiA5.add(margitAfter);
+
+			JCheckBox mA5Margit = new JCheckBox("Completed");
+			mA5Margit.setFont(new Font("Tahoma", Font.PLAIN, 15));
+			mA5Margit.setBounds(269, 34, 97, 23);
+			majikoiA5.add(mA5Margit);
 		
 		// About
 			
