@@ -1188,15 +1188,18 @@ public class MajikoiRoutes extends JFrame {
 				    	
 				    	// Write m1States to State.txt
 				        try {
-				        	if (d) Arrays.fill(m1States, "0");
-							BufferedWriter bw = new BufferedWriter(new FileWriter(m1State));
-							//System.out.println("M1");
-							for (String state : m1States) {
-								//System.out.println(state);
-								bw.write(state);
-								bw.newLine();
+				        	if (d) {
+				        		Arrays.fill(m1States, "0");
+							} else {
+								BufferedWriter bw = new BufferedWriter(new FileWriter(m1State));
+								//System.out.println("M1");
+								for (String state : m1States) {
+									//System.out.println(state);
+									bw.write(state);
+									bw.newLine();
+								}
+								bw.close();
 							}
-							bw.close();
 						} catch (IOException e) {
 							e.printStackTrace();
 						}
@@ -1422,13 +1425,16 @@ public class MajikoiRoutes extends JFrame {
 			    	}
 			    	
 			    	try {
-			    		if (d) Arrays.fill(mSStates, "0");
-			    		BufferedWriter bw = new BufferedWriter(new FileWriter(mSState));
-						for (String sState : mSStates) {
-							bw.write(sState);
-							bw.newLine();
+			    		if (d) {
+			    			Arrays.fill(mSStates, "0");
+						} else {
+							BufferedWriter bw = new BufferedWriter(new FileWriter(mSState));
+							for (String sState : mSStates) {
+								bw.write(sState);
+								bw.newLine();
+							}
+							bw.close();
 						}
-			    		bw.close();
 			    	} catch (Exception e) {
 			    		e.printStackTrace();
 			    	}
@@ -1455,15 +1461,18 @@ public class MajikoiRoutes extends JFrame {
 			    		}
 			    		
 			    		try {
-			    			if (d) Arrays.fill(mA1States, "0");
-			    			BufferedWriter bw = new BufferedWriter(new FileWriter(mA1State));
-			    			//System.out.println("M-A1");
-							for (String a1State : mA1States) {
-								//System.out.println(a1State);
-								bw.write(a1State);
-								bw.newLine();
+			    			if (d) {
+								Arrays.fill(mA1States, "0");
+							} else {
+								BufferedWriter bw = new BufferedWriter(new FileWriter(mA1State));
+								//System.out.println("M-A1");
+								for (String a1State : mA1States) {
+									//System.out.println(a1State);
+									bw.write(a1State);
+									bw.newLine();
+								}
+								bw.close();
 							}
-			    			bw.close();
 			    		} catch (IOException e) {
 			    			e.printStackTrace();
 			    		}
@@ -1491,15 +1500,18 @@ public class MajikoiRoutes extends JFrame {
 			    		}
 			    		
 			    		try {
-			    			if (d) Arrays.fill(mA2States, "0");
-			    			BufferedWriter bw = new BufferedWriter(new FileWriter(mA2State));
-			    			//System.out.println("M-A1");
-							for (String a2State : mA2States) {
-								//System.out.println(a2State);
-								bw.write(a2State);
-								bw.newLine();
+			    			if (d) {
+								Arrays.fill(mA2States, "0");
+							} else {
+								BufferedWriter bw = new BufferedWriter(new FileWriter(mA2State));
+								//System.out.println("M-A1");
+								for (String a2State : mA2States) {
+									//System.out.println(a2State);
+									bw.write(a2State);
+									bw.newLine();
+								}
+								bw.close();
 							}
-			    			bw.close();
 			    		} catch (IOException e) {
 			    			e.printStackTrace();
 			    		}
@@ -1527,15 +1539,18 @@ public class MajikoiRoutes extends JFrame {
 			    		}
 			    		
 						try {
-							if (d) Arrays.fill(mA3States, "0");
-							BufferedWriter bw = new BufferedWriter(new FileWriter(mA3State));
-							//System.out.println("M-A3");
-							for (String a3State : mA3States) {
-								//System.out.println(a3State);
-								bw.write(a3State);
-								bw.newLine();
+							if (d) {
+								Arrays.fill(mA3States, "0");
+							} else {
+								BufferedWriter bw = new BufferedWriter(new FileWriter(mA3State));
+								//System.out.println("M-A3");
+								for (String a3State : mA3States) {
+									//System.out.println(a3State);
+									bw.write(a3State);
+									bw.newLine();
+								}
+								bw.close();
 							}
-							bw.close();
 						} catch (IOException e) {
 							e.printStackTrace();
 						}
@@ -1557,15 +1572,18 @@ public class MajikoiRoutes extends JFrame {
 					}
 
 					try {
-						if (d) Arrays.fill(mA4States, "0");
-						BufferedWriter bw = new BufferedWriter(new FileWriter(mA4State));
-						//System.out.println("M-A4");
-						for (String a4State : mA4States) {
-							//System.out.println(a4State);
-							bw.write(a4State);
-							bw.newLine();
+						if (d) {
+							Arrays.fill(mA4States, "0");
+						} else {
+							BufferedWriter bw = new BufferedWriter(new FileWriter(mA4State));
+							//System.out.println("M-A4");
+							for (String a4State : mA4States) {
+								//System.out.println(a4State);
+								bw.write(a4State);
+								bw.newLine();
+							}
+							bw.close();
 						}
-						bw.close();
 					} catch (IOException e) {
 						e.printStackTrace();
 					}
@@ -1592,14 +1610,17 @@ public class MajikoiRoutes extends JFrame {
 					}
 
 					try {
-						if (d) Arrays.fill(mA5States, "0");
-						BufferedWriter bw = new BufferedWriter(new FileWriter(mA5State));
-						for (String a5State : mA5States) {
-							//System.out.println(a5State);
-							bw.write(a5State);
-							bw.newLine();
+						if (d) {
+							Arrays.fill(mA5States, "0");
+						} else {
+							BufferedWriter bw = new BufferedWriter(new FileWriter(mA5State));
+							for (String a5State : mA5States) {
+								//System.out.println(a5State);
+								bw.write(a5State);
+								bw.newLine();
+							}
+							bw.close();
 						}
-						bw.close();
 					} catch (IOException e) {
 						e.printStackTrace();
 					}
